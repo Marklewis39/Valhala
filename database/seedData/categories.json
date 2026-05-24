@@ -1,0 +1,181 @@
+{
+  "categories": [
+    {
+      "id": "whiskey",
+      "name": "Whiskey",
+      "displayName": "Whiskey",
+      "icon": "🥃",
+      "color": "#d4a574",
+      "description": "Premium whiskey from Scotland, Ireland, USA, and Japan. From smooth blends to peaty single malts.",
+      "imageUrl": "/assets/categories/whiskey.jpg",
+      "order": 1,
+      "isActive": true,
+      "subcategories": [
+        { "id": "scotch", "name": "Scotch Whisky", "filter": "scotch" },
+        { "id": "irish", "name": "Irish Whiskey", "filter": "irish" },
+        { "id": "bourbon", "name": "Bourbon", "filter": "bourbon" },
+        { "id": "rye", "name": "Rye Whiskey", "filter": "rye" },
+        { "id": "japanese", "name": "Japanese Whisky", "filter": "japanese" }
+      ],
+      "popularBrands": ["Jack Daniel's", "Johnnie Walker", "Jameson", "Jim Beam", "Crown Royal"]
+    },
+    {
+      "id": "beer",
+      "name": "Beer",
+      "displayName": "Beer",
+      "icon": "🍺",
+      "color": "#f5c542",
+      "description": "Refreshing beers from local and international breweries. Lagers, stouts, ales, and ciders.",
+      "imageUrl": "/assets/categories/beer.jpg",
+      "order": 2,
+      "isActive": true,
+      "subcategories": [
+        { "id": "lager", "name": "Lager", "filter": "lager" },
+        { "id": "stout", "name": "Stout", "filter": "stout" },
+        { "id": "ale", "name": "Ale", "filter": "ale" },
+        { "id": "cider", "name": "Cider", "filter": "cider" },
+        { "id": "non_alcoholic", "name": "Non-Alcoholic", "filter": "non_alcoholic" }
+      ],
+      "popularBrands": ["Tusker", "Guinness", "Heineken", "Carlsberg", "Kilimanjaro"]
+    },
+    {
+      "id": "wine",
+      "name": "Wine",
+      "displayName": "Wine",
+      "icon": "🍷",
+      "color": "#9b2c2c",
+      "description": "Fine wines from around the world. Red, white, rosé, and sparkling varieties.",
+      "imageUrl": "/assets/categories/wine.jpg",
+      "order": 3,
+      "isActive": true,
+      "subcategories": [
+        { "id": "red", "name": "Red Wine", "filter": "red" },
+        { "id": "white", "name": "White Wine", "filter": "white" },
+        { "id": "rose", "name": "Rosé", "filter": "rose" },
+        { "id": "sparkling", "name": "Sparkling", "filter": "sparkling" },
+        { "id": "dessert", "name": "Dessert Wine", "filter": "dessert" }
+      ],
+      "popularBrands": ["Savour", "Four Cousins", "Nederburg", "Robertson", "Drostdy-Hof"]
+    },
+    {
+      "id": "gin",
+      "name": "Gin",
+      "displayName": "Gin",
+      "icon": "🍸",
+      "color": "#4a90c4",
+      "description": "Craft gins with unique botanical blends. Perfect for cocktails or with tonic.",
+      "imageUrl": "/assets/categories/gin.jpg",
+      "order": 4,
+      "isActive": true,
+      "subcategories": [
+        { "id": "london_dry", "name": "London Dry", "filter": "london_dry" },
+        { "id": "pink", "name": "Pink Gin", "filter": "pink" },
+        { "id": "sloe", "name": "Sloe Gin", "filter": "sloe" },
+        { "id": "craft", "name": "Craft Gin", "filter": "craft" }
+      ],
+      "popularBrands": ["Bombay Sapphire", "Tanqueray", "Gordon's", "Hendrick's", "Beefeater"]
+    },
+    {
+      "id": "vodka",
+      "name": "Vodka",
+      "displayName": "Vodka",
+      "icon": "🍹",
+      "color": "#c0c0c0",
+      "description": "Premium vodkas distilled multiple times for exceptional smoothness.",
+      "imageUrl": "/assets/categories/vodka.jpg",
+      "order": 5,
+      "isActive": true,
+      "subcategories": [
+        { "id": "plain", "name": "Plain Vodka", "filter": "plain" },
+        { "id": "flavored", "name": "Flavored Vodka", "filter": "flavored" },
+        { "id": "premium", "name": "Premium Vodka", "filter": "premium" }
+      ],
+      "popularBrands": ["Absolut", "Smirnoff", "Grey Goose", "Belvedere", "Ciroc"]
+    },
+    {
+      "id": "scotch",
+      "name": "Scotch",
+      "displayName": "Scotch Whisky",
+      "icon": "🥃",
+      "color": "#8b5a2b",
+      "description": "Authentic Scotch whisky from Scotland. Single malt and blended varieties.",
+      "imageUrl": "/assets/categories/scotch.jpg",
+      "order": 6,
+      "isActive": true,
+      "subcategories": [
+        { "id": "single_malt", "name": "Single Malt", "filter": "single_malt" },
+        { "id": "blended", "name": "Blended Scotch", "filter": "blended" },
+        { "id": "single_grain", "name": "Single Grain", "filter": "single_grain" }
+      ],
+      "popularBrands": ["Glenfiddich", "Macallan", "Johnnie Walker", "Chivas Regal", "Ballantine's"]
+    },
+    {
+      "id": "cocktails",
+      "name": "Cocktails",
+      "displayName": "Ready-to-Drink Cocktails",
+      "icon": "🍹",
+      "color": "#e87c7c",
+      "description": "Premixed cocktails ready to serve. Perfect for parties and gatherings.",
+      "imageUrl": "/assets/categories/cocktails.jpg",
+      "order": 7,
+      "isActive": true,
+      "subcategories": [
+        { "id": "premixed", "name": "Premixed", "filter": "premixed" },
+        { "id": "canned", "name": "Canned Cocktails", "filter": "canned" },
+        { "id": "bottled", "name": "Bottled Cocktails", "filter": "bottled" }
+      ],
+      "popularBrands": ["Bacardi", "Smirnoff", "Pimm's", "Kahlua", "Malibu"]
+    },
+    {
+      "id": "champagne",
+      "name": "Champagne",
+      "displayName": "Champagne & Sparkling",
+      "icon": "🥂",
+      "color": "#f4d03f",
+      "description": "Celebratory champagnes and sparkling wines from France and beyond.",
+      "imageUrl": "/assets/categories/champagne.jpg",
+      "order": 8,
+      "isActive": true,
+      "subcategories": [
+        { "id": "french", "name": "French Champagne", "filter": "french" },
+        { "id": "prosecco", "name": "Prosecco", "filter": "prosecco" },
+        { "id": "cava", "name": "Cava", "filter": "cava" }
+      ],
+      "popularBrands": ["Moët & Chandon", "Veuve Clicquot", "Dom Pérignon", "Laurent-Perrier", "Taittinger"]
+    },
+    {
+      "id": "liqueurs",
+      "name": "Liqueurs",
+      "displayName": "Liqueurs & Cordials",
+      "icon": "🍯",
+      "color": "#c97e5a",
+      "description": "Sweet and flavored liqueurs for sipping or mixing.",
+      "imageUrl": "/assets/categories/liqueurs.jpg",
+      "order": 9,
+      "isActive": true,
+      "subcategories": [
+        { "id": "cream", "name": "Cream Liqueurs", "filter": "cream" },
+        { "id": "fruit", "name": "Fruit Liqueurs", "filter": "fruit" },
+        { "id": "herbal", "name": "Herbal Liqueurs", "filter": "herbal" }
+      ],
+      "popularBrands": ["Baileys", "Jägermeister", "Amarula", "Sambuca", "Midori"]
+    },
+    {
+      "id": "brandy",
+      "name": "Brandy",
+      "displayName": "Brandy & Cognac",
+      "icon": "🍇",
+      "color": "#704214",
+      "description": "Aged brandies and cognacs with rich, complex flavors.",
+      "imageUrl": "/assets/categories/brandy.jpg",
+      "order": 10,
+      "isActive": true,
+      "subcategories": [
+        { "id": "cognac", "name": "Cognac", "filter": "cognac" },
+        { "id": "armagnac", "name": "Armagnac", "filter": "armagnac" },
+        { "id": "fruit_brandy", "name": "Fruit Brandy", "filter": "fruit_brandy" }
+      ],
+      "popularBrands": ["Hennessy", "Remy Martin", "Courvoisier", "Martell", "Drostdy-Hof"]
+    }
+  ]
+}

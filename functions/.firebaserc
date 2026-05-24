@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "valhala"
+  },
+  "targets": {
+    "valhala": {
+      "storage": {
+        "valhala-storage": [
+          "valhala.appspot.com"
+        ]
+      }
+    }
+  }
+}

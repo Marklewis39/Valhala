@@ -1,0 +1,45 @@
+{
+  "name": "valhala-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "dev:admin": "vite --port 3001 --mode admin",
+    "dev:driver": "vite --port 3002 --mode driver",
+    "build": "vite build",
+    "build:admin": "cross-env VITE_APP_MODE=admin vite build --outDir dist/admin",
+    "build:driver": "cross-env VITE_APP_MODE=driver vite build --outDir dist/driver",
+    "build:all": "npm run build && npm run build:admin && npm run build:driver",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "firebase": "^10.7.0",
+    "axios": "^1.6.0",
+    "react-hot-toast": "^2.4.0",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^4.2.1",
+    "recharts": "^2.10.0",
+    "framer-motion": "^10.16.0",
+    "lucide-react": "^0.292.0",
+    "date-fns": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.0",
+    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3"
+  }
+}

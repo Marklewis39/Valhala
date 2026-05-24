@@ -1,0 +1,34 @@
+{
+  "name": "valhala",
+  "version": "1.0.0",
+  "description": "Alcohol delivery web app - Customer, Admin, and Driver Portals",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "dev:admin": "cd frontend && npm run dev:admin",
+    "dev:driver": "cd frontend && npm run dev:driver",
+    "build": "cd frontend && npm run build",
+    "build:all": "cd frontend && npm run build:all",
+    "preview": "cd frontend && npm run preview",
+    "seed": "node scripts/seedDatabase.js",
+    "mock-data": "node scripts/generateMockData.js",
+    "simulate": "node scripts/simulateDriverLocation.js",
+    "functions:serve": "cd functions && npm run serve",
+    "functions:deploy": "cd functions && npm run deploy",
+    "functions:logs": "cd functions && npm run logs",
+    "install:all": "npm install && cd frontend && npm install && cd ../functions && npm install",
+    "clean": "rm -rf frontend/node_modules functions/node_modules node_modules"
+  },
+  "keywords": [
+    "alcohol",
+    "delivery",
+    "react",
+    "firebase",
+    "vercel"
+  ],
+  "author": "Valhala",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

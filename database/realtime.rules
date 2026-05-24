@@ -1,0 +1,42 @@
+{
+  "rules": {
+    // Driver locations - drivers write, admin sees all, customers see via security rule
+    "driverLocations": {
+      "$driverId": {
+        ".write": "auth.uid == $driverId || auth.token.admin == true",
+        // Customers can read IF this driver is assigned to their active order
+        ".read": "auth.token.admin == true || auth.uid == $driverId || 
+                  (auth.uid != null && 
+                   root.child('orderAssignments').child(auth.uid).val() == $driverId)"
+      }
+    },
+    
+    // Track which driver is assigned to which customer
+    "orderAssignments": {
+      "$customerId": {
+        ".read": "auth.uid == $customerId || auth.token.admin == true",
+        ".write": "auth.token.admin == true"
+      }
+    },
+    
+    // Active drivers list - admin only
+    "activeDrivers": {
+      ".read": "auth.token.admin == true",
+      ".write": "auth.token.admin == true"
+    },
+    
+    // Delivery progress
+    "deliveryProgress": {
+      "$orderId": {
+        ".read": "auth != null && (auth.uid == root.child('orders').child($orderId).child('userId').val() || auth.token.admin == true || auth.uid == root.child('orders').child($orderId).child('driverId').val())",
+        ".write": "auth != null && (auth.uid == root.child('orders').child($orderId).child('driverId').val() || auth.token.admin == true)"
+      }
+    },
+    
+    // Test data
+    "test": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}

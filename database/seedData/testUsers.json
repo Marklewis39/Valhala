@@ -1,0 +1,345 @@
+{
+  "users": [
+    {
+      "email": "customer1@test.com",
+      "password": "Customer123!",
+      "name": "John Kamau",
+      "phone": "+254712345678",
+      "alternativePhone": "+254723456789",
+      "address": {
+        "street": "123 Kenyatta Avenue",
+        "city": "Nairobi",
+        "postalCode": "00100",
+        "coordinates": {
+          "lat": -1.2921,
+          "lng": 36.8219
+        }
+      },
+      "role": "customer",
+      "isActive": true,
+      "emailVerified": true,
+      "dateOfBirth": "1990-05-15",
+      "preferences": {
+        "notifications": true,
+        "emailUpdates": true,
+        "smsAlerts": true,
+        "language": "en",
+        "currency": "KES"
+      },
+      "orderHistory": [],
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "email": "customer2@test.com",
+      "password": "Customer123!",
+      "name": "Mary Wanjiku",
+      "phone": "+254723456789",
+      "alternativePhone": "+254734567890",
+      "address": {
+        "street": "456 Moi Avenue",
+        "city": "Nairobi",
+        "postalCode": "00100",
+        "coordinates": {
+          "lat": -1.2833,
+          "lng": 36.8233
+        }
+      },
+      "role": "customer",
+      "isActive": true,
+      "emailVerified": true,
+      "dateOfBirth": "1988-08-22",
+      "preferences": {
+        "notifications": true,
+        "emailUpdates": true,
+        "smsAlerts": true,
+        "language": "en",
+        "currency": "KES"
+      },
+      "orderHistory": [],
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "email": "customer3@test.com",
+      "password": "Customer123!",
+      "name": "Peter Omondi",
+      "phone": "+254734567890",
+      "alternativePhone": "+254745678901",
+      "address": {
+        "street": "789 University Way",
+        "city": "Nairobi",
+        "postalCode": "00100",
+        "coordinates": {
+          "lat": -1.2800,
+          "lng": 36.8200
+        }
+      },
+      "role": "customer",
+      "isActive": true,
+      "emailVerified": false,
+      "dateOfBirth": "1995-03-10",
+      "preferences": {
+        "notifications": true,
+        "emailUpdates": false,
+        "smsAlerts": true,
+        "language": "en",
+        "currency": "KES"
+      },
+      "orderHistory": [],
+      "createdAt": "2024-01-15T00:00:00Z"
+    },
+    {
+      "email": "customer4@test.com",
+      "password": "Customer123!",
+      "name": "Sarah Muthoni",
+      "phone": "+254745678901",
+      "alternativePhone": "+254756789012",
+      "address": {
+        "street": "101 Ngong Road",
+        "city": "Nairobi",
+        "postalCode": "00505",
+        "coordinates": {
+          "lat": -1.2700,
+          "lng": 36.8000
+        }
+      },
+      "role": "customer",
+      "isActive": true,
+      "emailVerified": true,
+      "dateOfBirth": "1992-11-28",
+      "preferences": {
+        "notifications": true,
+        "emailUpdates": true,
+        "smsAlerts": false,
+        "language": "en",
+        "currency": "KES"
+      },
+      "orderHistory": [],
+      "createdAt": "2024-02-01T00:00:00Z"
+    },
+    {
+      "email": "customer5@test.com",
+      "password": "Customer123!",
+      "name": "James Ndung'u",
+      "phone": "+254756789012",
+      "alternativePhone": "+254767890123",
+      "address": {
+        "street": "202 Thika Road",
+        "city": "Nairobi",
+        "postalCode": "00618",
+        "coordinates": {
+          "lat": -1.2300,
+          "lng": 36.8500
+        }
+      },
+      "role": "customer",
+      "isActive": true,
+      "emailVerified": true,
+      "dateOfBirth": "1985-07-19",
+      "preferences": {
+        "notifications": false,
+        "emailUpdates": true,
+        "smsAlerts": true,
+        "language": "en",
+        "currency": "KES"
+      },
+      "orderHistory": [],
+      "createdAt": "2024-02-15T00:00:00Z"
+    },
+    {
+      "email": "driver1@valhala.com",
+      "password": "Driver123!",
+      "name": "David Kimani",
+      "phone": "+254712345680",
+      "alternativePhone": "+254723456791",
+      "address": {
+        "street": "333 River Road",
+        "city": "Nairobi",
+        "postalCode": "00100",
+        "coordinates": {
+          "lat": -1.2850,
+          "lng": 36.8250
+        }
+      },
+      "role": "driver",
+      "isActive": true,
+      "emailVerified": true,
+      "dateOfBirth": "1990-01-01",
+      "preferences": {
+        "notifications": true,
+        "emailUpdates": true,
+        "smsAlerts": true,
+        "language": "en",
+        "currency": "KES"
+      },
+      "driverDetails": {
+        "vehicleType": "motorcycle",
+        "vehicleNumber": "KCD 123A",
+        "licenseNumber": "DL123456",
+        "idNumber": "12345678",
+        "emergencyContact": "Jane Kimani",
+        "emergencyPhone": "+254712345681"
+      },
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "email": "driver2@valhala.com",
+      "password": "Driver123!",
+      "name": "Michael Otieno",
+      "phone": "+254723456791",
+      "alternativePhone": "+254734567902",
+      "address": {
+        "street": "444 Jogoo Road",
+        "city": "Nairobi",
+        "postalCode": "00515",
+        "coordinates": {
+          "lat": -1.2900,
+          "lng": 36.8400
+        }
+      },
+      "role": "driver",
+      "isActive": true,
+      "emailVerified": true,
+      "dateOfBirth": "1988-03-15",
+      "preferences": {
+        "notifications": true,
+        "emailUpdates": true,
+        "smsAlerts": true,
+        "language": "en",
+        "currency": "KES"
+      },
+      "driverDetails": {
+        "vehicleType": "bicycle",
+        "vehicleNumber": "BCD 456B",
+        "licenseNumber": "DL234567",
+        "idNumber": "87654321",
+        "emergencyContact": "Mary Otieno",
+        "emergencyPhone": "+254723456792"
+      },
+      "createdAt": "2024-01-15T00:00:00Z"
+    },
+    {
+      "email": "driver3@valhala.com",
+      "password": "Driver123!",
+      "name": "Robert Maina",
+      "phone": "+254734567902",
+      "alternativePhone": "+254745678013",
+      "address": {
+        "street": "555 Mbagathi Way",
+        "city": "Nairobi",
+        "postalCode": "00505",
+        "coordinates": {
+          "lat": -1.2950,
+          "lng": 36.7900
+        }
+      },
+      "role": "driver",
+      "isActive": true,
+      "emailVerified": true,
+      "dateOfBirth": "1992-07-22",
+      "preferences": {
+        "notifications": true,
+        "emailUpdates": true,
+        "smsAlerts": true,
+        "language": "en",
+        "currency": "KES"
+      },
+      "driverDetails": {
+        "vehicleType": "motorcycle",
+        "vehicleNumber": "KDE 789C",
+        "licenseNumber": "DL345678",
+        "idNumber": "34567890",
+        "emergencyContact": "Susan Maina",
+        "emergencyPhone": "+254734567903"
+      },
+      "createdAt": "2024-02-01T00:00:00Z"
+    },
+    {
+      "email": "admin@valhala.com",
+      "password": "Admin123!",
+      "name": "Valhala Administrator",
+      "phone": "+254700123456",
+      "alternativePhone": "+254711223344",
+      "address": {
+        "street": "Valhala HQ, Westlands",
+        "city": "Nairobi",
+        "postalCode": "00800",
+        "coordinates": {
+          "lat": -1.2675,
+          "lng": 36.8037
+        }
+      },
+      "role": "admin",
+      "isActive": true,
+      "emailVerified": true,
+      "dateOfBirth": "1985-01-01",
+      "preferences": {
+        "notifications": true,
+        "emailUpdates": true,
+        "smsAlerts": true,
+        "language": "en",
+        "currency": "KES"
+      },
+      "adminPermissions": [
+        "manage_users",
+        "manage_products",
+        "manage_orders",
+        "manage_drivers",
+        "view_analytics",
+        "manage_settings"
+      ],
+      "createdAt": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "adminCredentials": {
+    "email": "admin@valhala.com",
+    "password": "Admin123!",
+    "note": "This is the main administrator account with full system access"
+  },
+  "testCustomerCredentials": [
+    {
+      "email": "customer1@test.com",
+      "password": "Customer123!",
+      "name": "John Kamau"
+    },
+    {
+      "email": "customer2@test.com",
+      "password": "Customer123!",
+      "name": "Mary Wanjiku"
+    },
+    {
+      "email": "customer3@test.com",
+      "password": "Customer123!",
+      "name": "Peter Omondi"
+    },
+    {
+      "email": "customer4@test.com",
+      "password": "Customer123!",
+      "name": "Sarah Muthoni"
+    },
+    {
+      "email": "customer5@test.com",
+      "password": "Customer123!",
+      "name": "James Ndung'u"
+    }
+  ],
+  "driverCredentials": [
+    {
+      "email": "driver1@valhala.com",
+      "password": "Driver123!",
+      "name": "David Kimani",
+      "vehicle": "KCD 123A"
+    },
+    {
+      "email": "driver2@valhala.com",
+      "password": "Driver123!",
+      "name": "Michael Otieno",
+      "vehicle": "BCD 456B"
+    },
+    {
+      "email": "driver3@valhala.com",
+      "password": "Driver123!",
+      "name": "Robert Maina",
+      "vehicle": "KDE 789C"
+    }
+  ]
+}
