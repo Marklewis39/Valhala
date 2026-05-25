@@ -40,9 +40,9 @@ const FirstAdminRegister = () => {
     checkExistingAdmins();
   }, []);
 
-  // If admins already exist, redirect to login
+  // If admins already exist, redirect to login (fixed path - removed /admin prefix)
   if (!checking && hasExistingAdmin) {
-    navigate('/admin/login');
+    navigate('/login');
     return null;
   }
 
@@ -110,7 +110,8 @@ const FirstAdminRegister = () => {
       });
       
       toast.success('First admin account created successfully! Please login.');
-      navigate('/admin/login');
+      // Fixed redirect path - removed /admin prefix
+      navigate('/login');
       
     } catch (err) {
       console.error('Registration error:', err);

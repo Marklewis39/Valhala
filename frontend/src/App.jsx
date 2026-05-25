@@ -23,6 +23,7 @@ const SupportPage = lazy(() => import('./pages/customer/SupportPage'));
 
 // Admin Pages
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
+const FirstAdminRegister = lazy(() => import('./pages/admin/FirstAdminRegister'));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const DriversManagement = lazy(() => import('./pages/admin/DriversManagement'));
 const OrdersManagement = lazy(() => import('./pages/admin/OrdersManagement'));
@@ -95,9 +96,10 @@ function AdminApp() {
       <main className="flex-grow">
         <Suspense fallback={<LoadingSpinner fullScreen />}>
           <Routes>
-            {/* Admin Public Routes */}
-            <Route path="/" element={<AdminLogin />} />
+            {/* Admin Public Routes - First admin setup takes priority */}
+            <Route path="/" element={<FirstAdminRegister />} />
             <Route path="/login" element={<AdminLogin />} />
+            <Route path="/setup" element={<FirstAdminRegister />} />
             
             {/* Admin Protected Routes */}
             <Route path="/dashboard" element={<AdminDashboard />} />
@@ -107,7 +109,7 @@ function AdminApp() {
             <Route path="/inventory" element={<InventoryManagement />} />
             <Route path="/analytics" element={<SalesAnalytics />} />
             
-            {/* 404 - Redirect to admin login */}
+            {/* 404 - Redirect to admin root */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
