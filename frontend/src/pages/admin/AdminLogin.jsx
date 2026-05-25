@@ -10,17 +10,22 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { login, user, isAdmin, userRole } = useAuth();
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const { login, isAdmin, userRole } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/dashboard';
 
-  // Redirect if already logged in as admin
+  // Redirect after successful login (using separate state to avoid race conditions)
   useEffect(() => {
-    if (user && isAdmin) {
+    console.log('AdminLogin - Effect triggered:', { isAdmin, userRole, loginSuccess });
+    
+    if (loginSuccess && isAdmin) {
+      console.log('Login successful, redirecting to dashboard');
+      toast.success('Welcome to Admin Dashboard');
       navigate('/dashboard', { replace: true });
     }
-  }, [user, isAdmin, navigate]);
+  }, [isAdmin, loginSuccess, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,18 +36,18 @@ const AdminLogin = () => {
     }
 
     setLoading(true);
+    console.log('Attempting admin login for:', email);
+    
     try {
-      const result = await login(email, password, 'admin');
+      await login(email, password, 'admin');
+      console.log('Login API call successful');
       
-      // Check if user is admin using the returned data or role
-      if (result?.role === 'admin' || isAdmin) {
-        toast.success('Welcome to Admin Dashboard');
-        navigate('/dashboard', { replace: true });
-      } else {
-        toast.error('Access denied. Admin privileges required.');
-      }
+      // Set success flag to trigger redirect in useEffect
+      setLoginSuccess(true);
+      
     } catch (error) {
       console.error('Admin login failed:', error);
+      setLoginSuccess(false);
       // Error message already shown in login function
     } finally {
       setLoading(false);
