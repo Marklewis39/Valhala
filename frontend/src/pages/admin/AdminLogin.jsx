@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { Shield, Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
@@ -10,10 +10,17 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { login, userData } = useAuth();
+  const { login, user, isAdmin, userRole } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/admin/dashboard';
+  const from = location.state?.from?.pathname || '/dashboard';
+
+  // Redirect if already logged in as admin
+  useEffect(() => {
+    if (user && isAdmin) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [user, isAdmin, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,19 +32,18 @@ const AdminLogin = () => {
 
     setLoading(true);
     try {
-      await login(email, password);
+      const result = await login(email, password, 'admin');
       
-      // Check if user is admin
-      if (userData?.role !== 'admin') {
+      // Check if user is admin using the returned data or role
+      if (result?.role === 'admin' || isAdmin) {
+        toast.success('Welcome to Admin Dashboard');
+        navigate('/dashboard', { replace: true });
+      } else {
         toast.error('Access denied. Admin privileges required.');
-        return;
       }
-      
-      toast.success('Welcome to Admin Dashboard');
-      navigate(from, { replace: true });
     } catch (error) {
       console.error('Admin login failed:', error);
-      toast.error('Invalid credentials or insufficient privileges');
+      // Error message already shown in login function
     } finally {
       setLoading(false);
     }

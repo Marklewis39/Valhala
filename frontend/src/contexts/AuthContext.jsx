@@ -68,13 +68,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // Record the start time when the component mounts
     const startTime = Date.now();
-    
-    // Set minimum loading time to match fast van rotation
-    // Fast van rotation takes 1.2 seconds per full rotation
-    // Setting to 1500ms ensures at least one FULL rotation completes before page loads
-    const MINIMUM_LOAD_TIME = 1500; // 1.5 seconds - guarantees at least one full rotation
+    const MINIMUM_LOAD_TIME = 1500;
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       setUser(firebaseUser);
@@ -96,11 +91,9 @@ export const AuthProvider = ({ children }) => {
         setUserRole(null);
       }
       
-      // Calculate how much time has elapsed
       const elapsedTime = Date.now() - startTime;
       const remainingTime = MINIMUM_LOAD_TIME - elapsedTime;
       
-      // Ensure minimum loading time (at least one full rotation of the van)
       if (remainingTime > 0) {
         setTimeout(() => setLoading(false), remainingTime);
       } else {
@@ -118,6 +111,11 @@ export const AuthProvider = ({ children }) => {
       // After login, fetch and verify user has correct role
       const data = await fetchUserData(result.user.uid);
       
+      // Update states immediately
+      setUser(result.user);
+      setUserData(data);
+      setUserRole(data.role);
+      
       // Check if user type matches the intended login page
       if (userType === 'admin' && data.role !== 'admin') {
         await signOut(auth);
@@ -132,7 +130,6 @@ export const AuthProvider = ({ children }) => {
       }
       
       if (userType === 'customer' && data.role === 'admin') {
-        // Admin can also access customer side
         toast.success(`Welcome back, ${data.name || 'Admin'}!`);
       } else if (userType === 'customer' && data.role === 'driver') {
         await signOut(auth);
@@ -142,7 +139,7 @@ export const AuthProvider = ({ children }) => {
         toast.success(`Welcome back, ${data.name || 'Customer'}!`);
       }
       
-      return result;
+      return { user: result.user, userData: data, role: data.role };
     } catch (error) {
       console.error('Login error:', error);
       let message = 'Login failed. Please try again.';
@@ -163,7 +160,6 @@ export const AuthProvider = ({ children }) => {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
       
-      // Save user data to Firestore users collection
       await setDoc(doc(db, 'users', result.user.uid), {
         ...userDataInput,
         email,
@@ -235,13 +231,10 @@ export const AuthProvider = ({ children }) => {
     logout,
     resetPassword,
     updateUserProfile,
-    // Role helper functions
     isAdmin: userRole === 'admin',
     isCustomer: userRole === 'customer',
     isDriver: userRole === 'driver',
-    // Explicit role checks
     hasRole: (role) => userRole === role,
-    // Authentication state
     isAuthenticated: !!user
   };
 

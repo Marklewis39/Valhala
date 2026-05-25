@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import LoadingSpinner from './LoadingSpinner';
 
 const PrivateRoute = ({ children, allowedRoles = null }) => {
-  const { user, userData, loading, isAdmin, isCustomer, isDriver } = useAuth();
+  const { user, loading, isAdmin, isCustomer, isDriver, userRole } = useAuth();
 
   if (loading) {
     return <LoadingSpinner fullScreen />;
@@ -14,7 +14,7 @@ const PrivateRoute = ({ children, allowedRoles = null }) => {
   if (!user) {
     // Redirect based on the route pattern
     if (window.location.pathname.startsWith('/admin')) {
-      return <Navigate to="/admin/login" replace />;
+      return <Navigate to="/login" replace />;
     }
     if (window.location.pathname.startsWith('/driver')) {
       return <Navigate to="/driver/login" replace />;
@@ -39,7 +39,7 @@ const PrivateRoute = ({ children, allowedRoles = null }) => {
     if (!hasRequiredRole) {
       // Redirect to appropriate dashboard based on user's actual role
       if (isAdmin) {
-        return <Navigate to="/admin/dashboard" replace />;
+        return <Navigate to="/dashboard" replace />;
       }
       if (isDriver) {
         return <Navigate to="/driver/dashboard" replace />;
