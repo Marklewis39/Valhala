@@ -23,7 +23,6 @@ const SupportPage = lazy(() => import('./pages/customer/SupportPage'));
 
 // Admin Pages
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
-const FirstAdminRegister = lazy(() => import('./pages/admin/FirstAdminRegister'));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const DriversManagement = lazy(() => import('./pages/admin/DriversManagement'));
 const OrdersManagement = lazy(() => import('./pages/admin/OrdersManagement'));
@@ -38,9 +37,6 @@ const DriverDashboard = lazy(() => import('./pages/driver/DriverDashboard'));
 // ============================================
 // APP MODE DETECTION
 // ============================================
-// Determines which version of the app to run based on environment variable
-// VITE_APP_MODE can be: 'customer', 'admin', or 'driver'
-// Default is 'customer'
 const getAppMode = () => {
   const mode = import.meta.env.VITE_APP_MODE;
   if (mode === 'admin') return 'admin';
@@ -53,8 +49,6 @@ const appMode = getAppMode();
 // ============================================
 // CUSTOMER APP (Default)
 // ============================================
-// Includes: Product browsing, cart, checkout, order tracking
-// NO admin or driver routes accessible
 function CustomerApp() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#1a1a2e] to-[#16213e]">
@@ -62,20 +56,15 @@ function CustomerApp() {
         <Navbar />
         <main className="flex-grow">
           <Routes>
-            {/* Public Routes */}
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            
-            {/* Customer Routes */}
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/tracking/:orderId" element={<OrderTrackingPage />} />
             <Route path="/my-orders" element={<MyOrdersPage />} />
             <Route path="/support" element={<SupportPage />} />
-            
-            {/* 404 - Redirect to home */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
@@ -86,20 +75,17 @@ function CustomerApp() {
 }
 
 // ============================================
-// ADMIN APP (Separate Deployment)
+// ADMIN APP - Simplified (No FirstAdminRegister)
 // ============================================
-// Includes: Admin dashboard, driver management, inventory, analytics
-// NO customer routes accessible
 function AdminApp() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#1a1a2e] to-[#16213e]">
       <main className="flex-grow">
         <Suspense fallback={<LoadingSpinner fullScreen />}>
           <Routes>
-            {/* Admin Public Routes - First admin setup takes priority */}
-            <Route path="/" element={<FirstAdminRegister />} />
+            {/* Redirect root to login */}
+            <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/login" element={<AdminLogin />} />
-            <Route path="/setup" element={<FirstAdminRegister />} />
             
             {/* Admin Protected Routes */}
             <Route path="/dashboard" element={<AdminDashboard />} />
@@ -109,8 +95,8 @@ function AdminApp() {
             <Route path="/inventory" element={<InventoryManagement />} />
             <Route path="/analytics" element={<SalesAnalytics />} />
             
-            {/* 404 - Redirect to admin root */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* 404 - Redirect to login */}
+            <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
         </Suspense>
       </main>
@@ -119,24 +105,17 @@ function AdminApp() {
 }
 
 // ============================================
-// DRIVER APP (Separate Deployment)
+// DRIVER APP
 // ============================================
-// Includes: Driver dashboard, location tracking, delivery management
-// NO customer or admin routes accessible
 function DriverApp() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#1a1a2e] to-[#16213e]">
       <main className="flex-grow">
         <Suspense fallback={<LoadingSpinner fullScreen />}>
           <Routes>
-            {/* Driver Public Routes */}
             <Route path="/" element={<DriverLogin />} />
             <Route path="/login" element={<DriverLogin />} />
-            
-            {/* Driver Protected Routes */}
             <Route path="/dashboard" element={<DriverDashboard />} />
-            
-            {/* 404 - Redirect to driver login */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
@@ -148,9 +127,7 @@ function DriverApp() {
 // ============================================
 // MAIN APP COMPONENT
 // ============================================
-// Routes to the correct app based on VITE_APP_MODE environment variable
 function App() {
-  // Toast configuration shared across all apps
   const toastOptions = {
     duration: 4000,
     style: {
@@ -175,7 +152,6 @@ function App() {
     },
   };
 
-  // Render the appropriate app based on mode
   const renderApp = () => {
     switch (appMode) {
       case 'admin':

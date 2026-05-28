@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { Shield, Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -10,22 +10,18 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [loginSuccess, setLoginSuccess] = useState(false);
-  const { login, isAdmin, userRole } = useAuth();
+  const { login, isAdmin, user } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || '/dashboard';
 
-  // Redirect after successful login (using separate state to avoid race conditions)
+  // Redirect if already logged in as admin
   useEffect(() => {
-    console.log('AdminLogin - Effect triggered:', { isAdmin, userRole, loginSuccess });
+    console.log('AdminLogin - Checking existing session:', { user: !!user, isAdmin });
     
-    if (loginSuccess && isAdmin) {
-      console.log('Login successful, redirecting to dashboard');
-      toast.success('Welcome to Admin Dashboard');
+    if (user && isAdmin) {
+      console.log('Already logged in as admin, redirecting to dashboard');
       navigate('/dashboard', { replace: true });
     }
-  }, [isAdmin, loginSuccess, navigate]);
+  }, [user, isAdmin, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,15 +35,17 @@ const AdminLogin = () => {
     console.log('Attempting admin login for:', email);
     
     try {
-      await login(email, password, 'admin');
-      console.log('Login API call successful');
+      const result = await login(email, password, 'admin');
+      console.log('Login successful:', result);
       
-      // Set success flag to trigger redirect in useEffect
-      setLoginSuccess(true);
+      // Small delay to ensure state updates before redirect
+      setTimeout(() => {
+        console.log('Redirecting to dashboard');
+        navigate('/dashboard', { replace: true });
+      }, 500);
       
     } catch (error) {
       console.error('Admin login failed:', error);
-      setLoginSuccess(false);
       // Error message already shown in login function
     } finally {
       setLoading(false);
@@ -134,9 +132,6 @@ const AdminLogin = () => {
                   Remember me
                 </label>
               </div>
-              <button type="button" className="text-sm text-valhala-accent hover:text-valhala-gold">
-                Forgot password?
-              </button>
             </div>
 
             <button
